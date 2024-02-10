@@ -12,12 +12,19 @@ message();
 
 function message() {
 
-    const subtitle = document.createElement('h2');
+
+    let subtitle = document.querySelector('h2');
+
+
+     if(!subtitle) {
+        subtitle = document.createElement('h2');
+    }
+
+
     subtitle.classList.add('task-message');
 
     subtitle.textContent = elementUl.firstElementChild ? 'Tareas por hacer:' : 'No hay tareas aún.';
     
-    const prevMessage = document.querySelector('.task-message');
 
     elementUl.before(subtitle); //before or after para color antes o despues del elemento preseleccionado
 }
@@ -29,8 +36,8 @@ function handleSubmit(e) {
     e.preventDefault();
 
     const toDo = inputValue.value;
-    console.log(toDo)
     
+
     createHomework(toDo)
 
     this.reset();  //<--- that THIS is a reference in this code to form(container-inputs) and RESET() clean the input of characters.
